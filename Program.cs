@@ -51,16 +51,27 @@ namespace OrderBot
                     else if(line.StartsWith("url:")){
                         var pair = line.Substring(4).Split(':');
                         //add url
-                        Console.WriteLine($"adding url {pair[0]} to watcher {watcher.watcherName}");
+                        Console.WriteLine($"adding url {pair[0]} to watcher {watcher.Name}");
                         watcher.urls.Add(pair[0].Trim());
-                        
+
                         //add url xpath pair
-                        Console.WriteLine($"adding xpath {pair[1]} to watcher {watcher.watcherName}");
+                        Console.WriteLine($"adding xpath {pair[1]} to watcher {watcher.Name}");
                         watcher.urlXPath.Add(pair[0].Trim(), pair[1].Trim());
 
                     }
+                    else if(line.StartsWith("numbers:")){
+                        var numbers = line.Substring(8).Split(':');
+                        foreach(var number in numbers){
+                            Console.WriteLine($"Adding number {number} to Watcher {watcher.Name}");
+                            watcher.phoneNumbers.Add(number.Trim());
+                        }
+                    }
 
                 }
+            }
+            //create Browser Instances for each watcher
+            foreach(var watcher in watchers){
+                watcher.createWebDrivers();
             }
         }
     }

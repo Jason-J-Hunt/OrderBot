@@ -8,7 +8,7 @@ namespace OrderBot
     public class Watcher{
         //Fields
         #region fields
-        public string watcherName {get; set;}
+        public string Name {get; set;}
         public List<String> phoneNumbers {get; set;}
         public List<String> urls {get; set;}
         //List of browsers for each given url from config
@@ -19,7 +19,7 @@ namespace OrderBot
         //constructor takes watcher name and path to config
         public Watcher(string watcherName){
             //set watcher name
-            this.watcherName = watcherName;
+            this.Name = watcherName;
             //instantiate lists
             this.phoneNumbers = new List<String>();
             this.urls = new List<String>();
@@ -27,27 +27,57 @@ namespace OrderBot
             //instantiate map
             urlXPath =  new Dictionary<string, string>();
         }
-        private void createWebDrivers(){
+        public void createWebDrivers(){
             foreach(var url in urls){
                 var driver = new ChromeDriver();
                 driver.Url = url;
                 //add driver to list
                 webDrivers.Add(driver);
+                Console.WriteLine($"New Driver Created for{url}");
             }
         }
-        public void refresh(){
-            //go through driver and refresh 
-            string xpath = "";
+        public void Refresh(){
 
             foreach(var driver in webDrivers){
                 driver.Navigate().Refresh();
-                if(urlXPath.TryGetValue(driver.Url, out xpath)){
-                    var element = driver.FindElement(By.XPath(xpath));
-                    Console.WriteLine(element.Text);
-                }
-                else{
-                    Console.WriteLine($"XPath for Url:{driver.Url} not in map check config file!");
-                }
+
+            }
+        }
+        //check if instock and alert numbers with url
+        private void Alert(IWebDriver driver){
+            string xpath = "";
+            bool alert = false;
+            IWebElement element = null;
+            if(urlXPath.TryGetValue(driver.Url, out xpath)){
+                element = driver.FindElement(By.XPath(xpath));
+                Console.WriteLine(element.Text);
+            }
+            else{
+                Console.WriteLine($"XPath for Url:{driver.Url} not in map check config file!");
+                return;
+            }
+
+            if(element == null){
+                Console.WriteLine($"XPath {xpath} not found for url {driver.Url}");
+                return;
+            }
+            
+            switch(element.Text.ToLower()){
+                case "add to cart":
+                    alert = true;
+                    break;
+                case "pre-order":
+                    alert = true;
+                    break;
+                case "buy now":
+                    alert = true;
+                    break;
+                default:
+                    break;
+            }
+            //send text message to number with url for each website thats in stock
+            if(alert){
+
             }
         }
     }
