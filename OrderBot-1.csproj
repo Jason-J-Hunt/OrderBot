@@ -7,5 +7,6 @@
   <ItemGroup>
     <PackageReference Include="Selenium.WebDriver" Version="3.141.0"/>
     <PackageReference Include="CommandLineParser" Version="2.8.0"/>
+    <PackageReference Include="Twilio" Version="5.48.0"/>
   </ItemGroup>
 </Project>

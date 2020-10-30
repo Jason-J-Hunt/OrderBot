@@ -43,6 +43,10 @@
             "Selenium.WebDriver": {
               "target": "Package",
               "version": "[3.141.0, )"
+            },
+            "Twilio": {
+              "target": "Package",
+              "version": "[5.48.0, )"
             }
           },
           "imports": [

@@ -43,3 +43,10 @@ obj/settings.config/netcoreapp3.1/OrderBot-1.pdb
 bin/Debug/netcoreapp3.1/debug.log
 drivers/chromedriver.exe
 settings.config
+bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.JsonWebTokens.dll
+bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Logging.dll
+bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Tokens.dll
+bin/Debug/netcoreapp3.1/System.IdentityModel.Tokens.Jwt.dll
+bin/Debug/netcoreapp3.1/Twilio.dll
+obj/project.nuget.cache
+settings.config

@@ -5,6 +5,8 @@ using CommandLine;
 using System.Collections.Generic;
 using System.IO;
 using System.Diagnostics;
+using Twilio;
+using Twilio.Rest.Api.V2010.Account;
 
 namespace OrderBot
 {
@@ -18,7 +20,8 @@ namespace OrderBot
     class Program
     {
         private static List<Watcher> watchers {get; set;}
-
+        private static string accountSid {get; set;}
+        private static string authToken {get; set;}
         static void Main(string[] args)
         {
             Options ops = null;
@@ -71,11 +74,17 @@ namespace OrderBot
 
                     }
                     else if(line.StartsWith("numbers:")){
-                        var numbers = line.Substring(8).Split(':');
+                        var numbers = line.Substring(8).Split('|');
                         foreach(var number in numbers){
                             Console.WriteLine($"Adding number {number} to Watcher {watcher.Name}");
                             watcher.phoneNumbers.Add(number.Trim());
                         }
+                    }
+                    else if(line.StartsWith("accountSid:")){
+                        accountSid = line.Substring(11).Trim();
+                    }
+                    else if(line.StartsWith("authToken:")){
+                        authToken = line.Substring(10).Trim();
                     }
 
                 }
@@ -84,6 +93,13 @@ namespace OrderBot
             foreach(var watcher in watchers){
                 watcher.createWebDrivers();
             }
+
+            //create Twilio client
+            // Find your Account Sid and Token at twilio.com/console
+            // and set the environment variables. See http://twil.io/secure
+
+            TwilioClient.Init(accountSid, authToken);
+
         }
 
         private static void cleanup(){
@@ -113,7 +129,6 @@ namespace OrderBot
                 foreach(var watcher in watchers){
                     watcher.Refresh();
                 }
-
                 //Sleep for 5 min before checking again
                 Console.WriteLine("Sleeping for 5 min...");
                 System.Threading.Thread.Sleep(TimeSpan.FromMinutes(5));

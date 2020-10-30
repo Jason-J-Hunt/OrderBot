@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
+using Twilio;
+using Twilio.Rest.Api.V2010.Account;
 
 namespace OrderBot
 {
@@ -55,7 +57,7 @@ namespace OrderBot
             Console.WriteLine("Waiting 10 seconds for page to load...");
             System.Threading.Thread.Sleep(TimeSpan.FromSeconds(10));
             Console.WriteLine("Waiting Done...");
-            
+
             if(urlXPath.TryGetValue(driver.Url, out xpath)){
 
                 try{
@@ -92,7 +94,16 @@ namespace OrderBot
             }
             //send text message to number with url for each website thats in stock
             if(alert){
+                foreach(var number in phoneNumbers){
+                    var message = MessageResource.Create(
+                        body: $"Message from Jason's Bot: {Name}\n Item in stock: {driver.Url}",
+                        from: new Twilio.Types.PhoneNumber("+12054090597"),
+                        to: new Twilio.Types.PhoneNumber(number)
+                    );
 
+                    Console.WriteLine(message.Sid);
+                }
+                return;
             }
         }
     }
