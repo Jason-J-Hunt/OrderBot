@@ -29,7 +29,7 @@ namespace OrderBot
         }
         public void createWebDrivers(){
             foreach(var url in urls){
-                var driver = new ChromeDriver();
+                var driver = new ChromeDriver(@"D:\CodeProjects\OrderBot-1\drivers");
                 driver.Url = url;
                 //add driver to list
                 webDrivers.Add(driver);
@@ -39,7 +39,9 @@ namespace OrderBot
         public void Refresh(){
 
             foreach(var driver in webDrivers){
+                Console.WriteLine($"Page Refreshed for {driver.Url} ...");
                 driver.Navigate().Refresh();
+                Alert(driver);
 
             }
         }
@@ -49,8 +51,14 @@ namespace OrderBot
             bool alert = false;
             IWebElement element = null;
             if(urlXPath.TryGetValue(driver.Url, out xpath)){
-                element = driver.FindElement(By.XPath(xpath));
-                Console.WriteLine(element.Text);
+                try{
+                    element = driver.FindElement(By.XPath(xpath));
+                    Console.WriteLine(element.Text);
+                }
+                catch(Exception e){
+                    Console.WriteLine(e.ToString());
+                    return;
+                }
             }
             else{
                 Console.WriteLine($"XPath for Url:{driver.Url} not in map check config file!");
@@ -61,7 +69,7 @@ namespace OrderBot
                 Console.WriteLine($"XPath {xpath} not found for url {driver.Url}");
                 return;
             }
-            
+
             switch(element.Text.ToLower()){
                 case "add to cart":
                     alert = true;
