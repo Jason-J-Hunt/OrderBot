@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
 
 namespace OrderBot
 {
@@ -50,7 +51,13 @@ namespace OrderBot
             string xpath = "";
             bool alert = false;
             IWebElement element = null;
+
+            Console.WriteLine("Waiting 10 seconds for page to load...");
+            System.Threading.Thread.Sleep(TimeSpan.FromSeconds(10));
+            Console.WriteLine("Waiting Done...");
+            
             if(urlXPath.TryGetValue(driver.Url, out xpath)){
+
                 try{
                     element = driver.FindElement(By.XPath(xpath));
                     Console.WriteLine(element.Text);
