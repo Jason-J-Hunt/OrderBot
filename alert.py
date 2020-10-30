@@ -1,6 +1,6 @@
 import logging
 import argparse
-
+import mechanize
 
 ##logger initalization
 logging.basicConfig(filename="AlertScript.log", 
