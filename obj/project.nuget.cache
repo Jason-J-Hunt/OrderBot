@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "Nybj1h0JxAaZhwHguT4ehTye3mH8vmZcJuOaYqnIQ9UM99pOo+o3TkGAYgZjPiay8cmcf4nylVvZGsM4LvZ4+A==",
+  "dgSpecHash": "9D34BmKQHp5YT08rgUGvS2CJyvrccC7vSBqp9n3Tkx9HqpDT7AHkXs0oFKARYPQIRm5KTo4svzrnGHNplzf1xg==",
   "success": true,
   "projectFilePath": "D:\\CodeProjects\\OrderBot-1\\OrderBot-1.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\JASON\\.nuget\\packages\\commandlineparser\\2.8.0\\commandlineparser.2.8.0.nupkg.sha512",
     "C:\\Users\\JASON\\.nuget\\packages\\microsoft.csharp\\4.3.0\\microsoft.csharp.4.3.0.nupkg.sha512",
     "C:\\Users\\JASON\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\JASON\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",

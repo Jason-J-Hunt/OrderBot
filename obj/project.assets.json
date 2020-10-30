@@ -2,6 +2,15 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
+      "CommandLineParser/2.8.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/CommandLine.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/CommandLine.dll": {}
+        }
+      },
       "Microsoft.CSharp/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -1411,6 +1420,28 @@
     }
   },
   "libraries": {
+    "CommandLineParser/2.8.0": {
+      "sha512": "eco2HlKQBY4Joz9odHigzGpVzv6pjsXnY5lziioMveQxr+i2Z7xYcIOMeZTgYiqnMtMAbXMXsVhrNfWO5vJS8Q==",
+      "type": "package",
+      "path": "commandlineparser/2.8.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "CommandLine20.png",
+        "License.md",
+        "README.md",
+        "commandlineparser.2.8.0.nupkg.sha512",
+        "commandlineparser.nuspec",
+        "lib/net40/CommandLine.dll",
+        "lib/net40/CommandLine.xml",
+        "lib/net45/CommandLine.dll",
+        "lib/net45/CommandLine.xml",
+        "lib/net461/CommandLine.dll",
+        "lib/net461/CommandLine.xml",
+        "lib/netstandard2.0/CommandLine.dll",
+        "lib/netstandard2.0/CommandLine.xml"
+      ]
+    },
     "Microsoft.CSharp/4.3.0": {
       "sha512": "P+MBhIM0YX+JqROuf7i306ZLJEjQYA9uUyRDE+OqwUI5sh41e2ZbPQV3LfAPh+29cmceE1pUffXsGfR4eMY3KA==",
       "type": "package",
@@ -5232,6 +5263,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "CommandLineParser >= 2.8.0",
       "Selenium.WebDriver >= 3.141.0"
     ]
   },
@@ -5270,6 +5302,10 @@
     "frameworks": {
       "netcoreapp3.1": {
         "dependencies": {
+          "CommandLineParser": {
+            "target": "Package",
+            "version": "[2.8.0, )"
+          },
           "Selenium.WebDriver": {
             "target": "Package",
             "version": "[3.141.0, )"
