@@ -1,5 +1,21 @@
+import logging
+import argparse
+
+
+##logger initalization
+logging.basicConfig(filename="newfile.log", 
+        format='%(asctime)s %(message)s', 
+        filemode='w')
+logger = logging.getLogger
+##argument parser
+parser = argparse.ArgumentParser(description='Take Config File Path')
+parser.add_argument('--config',action='store', type=str, help='Filepath to config file')
+args = parser.parse_args()
+
+def initalize():
+    print("Initalize")
 def main():
-    print("Test")
+    initalize()
 
 if __name__ == "__main__" :
         main()
