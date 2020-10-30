@@ -7,3 +7,16 @@ obj/Debug/netcoreapp3.1/OrderBot-1.assets.cache
 obj/Debug/netcoreapp3.1/OrderBot-1.csproj.CoreCompileInputs.cache
 obj/Debug/netcoreapp3.1/OrderBot-1.csproj.FileListAbsolute.txt
 obj/Debug/netcoreapp3.1/OrderBot-1.csprojAssemblyReference.cache
+bin/Debug/netcoreapp3.1/Newtonsoft.Json.dll
+bin/Debug/netcoreapp3.1/OrderBot-1.dll
+bin/Debug/netcoreapp3.1/OrderBot-1.exe
+bin/Debug/netcoreapp3.1/OrderBot-1.pdb
+bin/Debug/netcoreapp3.1/WebDriver.dll
+obj/project.nuget.cache
+obj/Debug/netcoreapp3.1/OrderBot-1.csproj.CopyComplete
+obj/Debug/netcoreapp3.1/OrderBot-1.dll
+obj/Debug/netcoreapp3.1/OrderBot-1.exe
+obj/Debug/netcoreapp3.1/OrderBot-1.genruntimeconfig.cache
+obj/Debug/netcoreapp3.1/OrderBot-1.pdb
+
+

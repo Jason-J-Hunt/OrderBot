@@ -1,6 +1,8 @@
 ﻿using System;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 
-namespace OrderBot_1
+namespace OrderBot
 {
     class Program
     {
