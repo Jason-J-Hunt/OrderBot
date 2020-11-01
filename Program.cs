@@ -124,6 +124,7 @@ namespace OrderBot
 
         private static void run(){
             while(true){
+                
                 Console.WriteLine("Refreshing WebPages...");
 
                 foreach(var watcher in watchers){

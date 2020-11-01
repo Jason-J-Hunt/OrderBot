@@ -31,20 +31,21 @@ namespace OrderBot
             urlXPath =  new Dictionary<string, string>();
         }
         public void createWebDrivers(){
-            foreach(var url in urls){
-                var driver = new ChromeDriver(@"D:\CodeProjects\OrderBot-1\drivers");
-                driver.Url = url;
-                //add driver to list
-                webDrivers.Add(driver);
-                Console.WriteLine($"New Driver Created for{url}");
-            }
+            //create single driver uses less mem
+            var driver = new ChromeDriver(@"D:\CodeProjects\OrderBot-1\drivers");
+            
+            webDrivers.Add(driver);
+
         }
         public void Refresh(){
 
             foreach(var driver in webDrivers){
-                Console.WriteLine($"Page Refreshed for {driver.Url} ...");
-                driver.Navigate().Refresh();
-                Alert(driver);
+                //check each webpage to see if item is instock
+                foreach(var url in urls){
+                    Console.WriteLine($"Page Refreshed for {driver.Url} ...");
+                    driver.Navigate().GoToUrl(url);
+                    Alert(driver);
+                }
 
             }
         }
@@ -54,8 +55,8 @@ namespace OrderBot
             bool alert = false;
             IWebElement element = null;
 
-            Console.WriteLine("Waiting 10 seconds for page to load...");
-            System.Threading.Thread.Sleep(TimeSpan.FromSeconds(10));
+            Console.WriteLine("Waiting 5 seconds for page to load...");
+            System.Threading.Thread.Sleep(TimeSpan.FromSeconds(5));
             Console.WriteLine("Waiting Done...");
 
             if(urlXPath.TryGetValue(driver.Url, out xpath)){
